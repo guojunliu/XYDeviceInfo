@@ -6,7 +6,7 @@
 //
 
 #import "XYSystemUtil.h"
-#import <AdSupport/AdSupport.h>
+
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <sys/sysctl.h>
@@ -16,12 +16,15 @@
 #import <arpa/inet.h> // 获取ip
 #import <net/if.h> // 获取ip
 #include <mach/mach.h> // 获取内存
-#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
-    #import <AppTrackingTransparency/AppTrackingTransparency.h>
-#endif
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>
+
+#import <AdSupport/AdSupport.h>
+#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
+    #import <AppTrackingTransparency/AppTrackingTransparency.h>
+#endif
+static NSString *XY_ZeroIdfa = @"00000000-0000-0000-0000-000000000000";
 
 @implementation XYSystemUtil
 
@@ -427,28 +430,36 @@ static const u_int Adsforce_GIGABYTE = 1024 * 1024 * 1024;  // bytes
     return [addresses count] ? addresses : nil;
 }
 
-// 是否开启IDFA
+// 是否可以使用IDFA
 + (BOOL)canUseIDFA {
-//    if (@available(iOS 14.0, *)) {
-//        ATTrackingManagerAuthorizationStatus states = [ATTrackingManager trackingAuthorizationStatus];
-//        if (states == ATTrackingManagerAuthorizationStatusNotDetermined) {
-//            // 未提示用户
-//            return NO;
-//        }
-//        else if (states == ATTrackingManagerAuthorizationStatusRestricted) {
-//            // 限制使用
-//            return NO;
-//        }
-//        else if (states == ATTrackingManagerAuthorizationStatusDenied) {
-//            // 拒绝
-//            return NO;
-//        }
-//        else if (states == ATTrackingManagerAuthorizationStatusAuthorized) {
-//            NSString *idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
-//            return idfa;
-//        }
-//        return YES;
-//    }
+    
+    // ios 14处理
+    if (@available(iOS 14.0, *)) {
+        ATTrackingManagerAuthorizationStatus states = [ATTrackingManager trackingAuthorizationStatus];
+        if (states == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            // 未提示用户
+            return NO;
+        }
+        else if (states == ATTrackingManagerAuthorizationStatusRestricted) {
+            // 限制使用
+            return NO;
+        }
+        else if (states == ATTrackingManagerAuthorizationStatusDenied) {
+            // 拒绝
+            return NO;
+        }
+        else if (states == ATTrackingManagerAuthorizationStatusAuthorized) {
+            return YES;
+        }
+        
+        NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+        if ([idfa isEqualToString:XY_ZeroIdfa]) {
+            return NO;
+        }
+        else {
+            return YES;
+        }
+    }
     
     if (@available(iOS 10.0, *)) {
         BOOL canUseIDFA = [ASIdentifierManager sharedManager].advertisingTrackingEnabled;   //如果返回的YES说明没有 “开启限制广告跟踪”，可以获取到正确的idfa  如果返回的是NO，说明等待你的就是00000000-0000-0000-0000-000000000000
@@ -459,8 +470,10 @@ static const u_int Adsforce_GIGABYTE = 1024 * 1024 * 1024;  // bytes
 }
 
 + (NSString *)idfa {
-    NSString *str = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    return str;
+    
+    // iOS 10以下关闭广告追踪，也可以正常获取到IDFA
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    return idfa;
 }
 
 + (NSString *)idfv {

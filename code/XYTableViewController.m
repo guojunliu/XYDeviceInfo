@@ -8,6 +8,10 @@
 #import "XYTableViewController.h"
 #import "XYDeviceInfoModel.h"
 #import "XYLocalized.h"
+#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
+    #import <AppTrackingTransparency/AppTrackingTransparency.h>
+#endif
+#import <AdSupport/AdSupport.h>
 
 @interface XYTableViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -33,6 +37,15 @@
     
     self.title = XYLocalizedString(@"设备信息");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:18/255.0 green:150/255.0 blue:219/255.0 alpha:1]}];//#1296DB
+    
+    UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    refreshBtn.frame = CGRectMake(0, 0, 20, 20);
+    [refreshBtn setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    [refreshBtn addTarget:self action:@selector(refreshClick) forControlEvents:UIControlEventTouchUpInside];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [v addSubview:refreshBtn];
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithCustomView:v];
+    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:refreshItem, nil]];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     shareBtn.frame = CGRectMake(0, 0, 20, 20);
@@ -60,6 +73,20 @@
     
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:_shareItem, _copyItem, nil]];
     
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    // 转屏通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
+    
+    [self createData];
+    [self requestIdfa];
+}
+
+- (void)createData {
     _dataSourceArr = [[NSMutableArray alloc] init];
     
     NSDictionary *dic1 = @{XYLocalizedString(@"系统信息"):[XYDeviceInfoModel getSystemInfoArray]};
@@ -80,14 +107,51 @@
     [_dataSourceArr addObject:dic6];
     [_dataSourceArr addObject:dic7];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
-    _tableView.showsVerticalScrollIndicator = NO;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
+    [_tableView reloadData];
+}
+
+#pragma mark - request idfa
+
+- (void)requestIdfa {
     
-    // 转屏通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
+    // iOS 14请求idfa权限
+    if (@available(iOS 14.0, *)) {
+        ATTrackingManagerAuthorizationStatus states = [ATTrackingManager trackingAuthorizationStatus];
+        if (states == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            // 未提示用户
+            
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // 获取到权限后，依然使用老方法获取idfa
+                    if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+                        [self createData];
+                    }
+                    else {
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+                        [alert addAction:action2];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                });
+            }];
+        }
+        else if (states == ATTrackingManagerAuthorizationStatusRestricted) {
+            // 限制使用
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:action2];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else if (states == ATTrackingManagerAuthorizationStatusDenied) {
+            // 拒绝
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:action2];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else if (states == ATTrackingManagerAuthorizationStatusAuthorized) {
+        }
+    }
 }
 
 #pragma mark - UIApplicationDidChangeStatusBarFrameNotification
@@ -97,6 +161,10 @@
 }
 
 #pragma mark - click
+
+- (void)refreshClick {
+    [self createData];
+}
 
 - (void)copyBtnClick {
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:_doneItem, nil]];

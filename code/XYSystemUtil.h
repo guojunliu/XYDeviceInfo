@@ -75,7 +75,7 @@
 // IPV6地址
 + (NSString *)getIPAddressWithIPV6;
 
-// 是否开启IDFA
+// 是否可以使用IDFA
 + (BOOL)canUseIDFA;
 
 // IDFA

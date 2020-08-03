@@ -53,3 +53,9 @@
 "已复制到剪贴板" = "Copied to Clipboard";
 "确认" = "Confirm";
 "未知" = "unknown";
+
+"放电" = "Discharge";
+"充电" = "Charge";
+"满电" = "Full battery";
+
+"请在设置-隐私-Tracking中允许App请求跟踪" = "Please allow App to request tracking in Settings-Privacy-Tracking";
