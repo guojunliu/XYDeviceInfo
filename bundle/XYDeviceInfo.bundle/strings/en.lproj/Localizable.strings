@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Steve
+
+  Created by steve on 2017/2/20.
+  Copyright © 2017年 liuguojun. All rights reserved.
+*/
+
+"设备名称" = "Device Name";
+"系统版本" = "System Version";
+"产品型号" = "Product Model";
+"系统语言" = "System Language";
+
+"逻辑分辨率" = "Logical Resolution";
+"缩放因子" = "Zoom Factor";
+"屏幕分辨率" = "Screen Resolution";
+
+"CPU架构" = "CPU Architecture";
+"CPU数目" = "CPU Number";
+"CPU使用总比例" = "Total CPU Usage Ratio";
+
+"内存总容量" = "Total Memory Capacity";
+"内存已使用" = "Memory Used";
+"内存剩余容量" = "Remaining memory capacity";
+
+"磁盘总容量" = "Total Disk Capacity";
+"磁盘已使用" = "Disk is used";
+"磁盘剩余容量" = "Remaining Disk Capacity";
+
+"剩余电量" = "Remaining Power";
+"电池状态" = "Battery Status";
+
+"网络状态" = "Network Status";
+"运营商" = "Carrier";
+"IPV4地址" = "IPV4 Address";
+"IPV6地址" = "IPV6 Address";
+
+"限制广告追踪" = "Limit Ad Tracking";
+"IDFA" = "IDFA";
+"IDFV" = "IDFV";
+
+"设备信息" = "Device Information";
+"系统信息" = "System Information";
+"屏幕信息" = "Screen Information";
+"CPU信息" = "CPU Information";
+"内存信息" = "Memory Information";
+"硬盘信息" = "Hard Disk Information";
+"电池信息" = "Battery Information";
+"网络信息" = "Network Information";
+"广告信息" = "Advertising Information";
+
+"未选择任何信息" = "No information selected";
+"已复制到剪贴板" = "Copied to Clipboard";
+"确认" = "Confirm";
+"未知" = "unknown";
