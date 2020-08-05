@@ -8,9 +8,11 @@
 #import "XYTableViewController.h"
 #import "XYDeviceInfoModel.h"
 #import "XYLocalized.h"
-#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
-    #import <AppTrackingTransparency/AppTrackingTransparency.h>
-#endif
+#import "XYSystemUtil.h"
+//#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
+//    #import <AppTrackingTransparency/AppTrackingTransparency.h>
+//#endif
+#import "XYATTrackingManager.h"
 #import <AdSupport/AdSupport.h>
 
 @interface XYTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -116,11 +118,11 @@
     
     // iOS 14请求idfa权限
     if (@available(iOS 14.0, *)) {
-        ATTrackingManagerAuthorizationStatus states = [ATTrackingManager trackingAuthorizationStatus];
+        ATTrackingManagerAuthorizationStatus states = [XYATTrackingManager trackingAuthorizationStatus];
         if (states == ATTrackingManagerAuthorizationStatusNotDetermined) {
             // 未提示用户
-            
-            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+
+            [XYATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // 获取到权限后，依然使用老方法获取idfa
                     if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
@@ -151,6 +153,23 @@
         }
         else if (states == ATTrackingManagerAuthorizationStatusAuthorized) {
         }
+        
+//        BOOL b = [XYSystemUtil canUseIDFA];
+//        if (!b) {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+//            [alert addAction:action2];
+//            [self presentViewController:alert animated:YES completion:nil];
+//        }
+    }
+    else {
+        BOOL b = [XYSystemUtil canUseIDFA];
+        if (!b) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-广告中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:action2];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }
 }
 
@@ -159,6 +178,8 @@
 - (void)didChangeRotate:(NSNotification*)notice {
     _tableView.frame = self.view.frame;
 }
+
+
 
 #pragma mark - click
 

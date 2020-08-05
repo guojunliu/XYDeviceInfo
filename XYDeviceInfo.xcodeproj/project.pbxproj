@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1B42C424DA5A5E00EBD452 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA92E78124D905E00041B338 /* AppTrackingTransparency.framework */; };
 		AA20D19824D7DE18008C3DA4 /* XYLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19024D7DE18008C3DA4 /* XYLocalized.m */; };
 		AA20D19924D7DE18008C3DA4 /* XYDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19324D7DE18008C3DA4 /* XYDeviceInfoModel.m */; };
 		AA20D19A24D7DE18008C3DA4 /* XYSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19424D7DE18008C3DA4 /* XYSystemUtil.m */; };
 		AA20D19B24D7DE18008C3DA4 /* XYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19724D7DE18008C3DA4 /* XYTableViewController.m */; };
 		AA20D19E24D7DE54008C3DA4 /* XYDeviceInfo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA20D19D24D7DE54008C3DA4 /* XYDeviceInfo.bundle */; };
+		AA5631BB24D9379200A50FC7 /* XYATTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5631B924D9379200A50FC7 /* XYATTrackingManager.m */; };
+		AA6D826F24D933D700C8844D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6D826E24D933D700C8844D /* AdSupport.framework */; };
 		AA7D49DB24D2B24200FCF8CA /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D49D924D2B24200FCF8CA /* SceneDelegate.m */; };
 		AA7D49DD24D2B2A600FCF8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7D49DC24D2B2A600FCF8CA /* Main.storyboard */; };
 		AABC312A24C854F800F8A31A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AABC312924C854F800F8A31A /* AppDelegate.m */; };
@@ -32,9 +35,13 @@
 		AA20D19724D7DE18008C3DA4 /* XYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTableViewController.m; sourceTree = "<group>"; };
 		AA20D19D24D7DE54008C3DA4 /* XYDeviceInfo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = XYDeviceInfo.bundle; sourceTree = "<group>"; };
 		AA20D19F24D7E6D6008C3DA4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		AA5631B924D9379200A50FC7 /* XYATTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYATTrackingManager.m; sourceTree = "<group>"; };
+		AA5631BA24D9379200A50FC7 /* XYATTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYATTrackingManager.h; sourceTree = "<group>"; };
+		AA6D826E24D933D700C8844D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA7D49D924D2B24200FCF8CA /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		AA7D49DA24D2B24200FCF8CA /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		AA7D49DC24D2B2A600FCF8CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AA92E78124D905E00041B338 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		AABC312524C854F800F8A31A /* XYDeviceInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYDeviceInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABC312824C854F800F8A31A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AABC312924C854F800F8A31A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1B42C424DA5A5E00EBD452 /* AppTrackingTransparency.framework in Frameworks */,
+				AA6D826F24D933D700C8844D /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +77,8 @@
 				AA20D19424D7DE18008C3DA4 /* XYSystemUtil.m */,
 				AA20D19224D7DE18008C3DA4 /* XYTableViewController.h */,
 				AA20D19724D7DE18008C3DA4 /* XYTableViewController.m */,
+				AA5631BA24D9379200A50FC7 /* XYATTrackingManager.h */,
+				AA5631B924D9379200A50FC7 /* XYATTrackingManager.m */,
 			);
 			path = code;
 			sourceTree = "<group>";
@@ -80,6 +91,15 @@
 			path = bundle;
 			sourceTree = "<group>";
 		};
+		AA92E78024D905E00041B338 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA6D826E24D933D700C8844D /* AdSupport.framework */,
+				AA92E78124D905E00041B338 /* AppTrackingTransparency.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AABC311C24C854F800F8A31A = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +107,7 @@
 				AA20D18F24D7DE18008C3DA4 /* code */,
 				AABC312724C854F800F8A31A /* XYDeviceInfo */,
 				AABC312624C854F800F8A31A /* Products */,
+				AA92E78024D905E00041B338 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,6 +211,7 @@
 				AA20D19824D7DE18008C3DA4 /* XYLocalized.m in Sources */,
 				AA20D19A24D7DE18008C3DA4 /* XYSystemUtil.m in Sources */,
 				AA20D19B24D7DE18008C3DA4 /* XYTableViewController.m in Sources */,
+				AA5631BB24D9379200A50FC7 /* XYATTrackingManager.m in Sources */,
 				AABC313024C854F800F8A31A /* ViewController.m in Sources */,
 				AA20D19924D7DE18008C3DA4 /* XYDeviceInfoModel.m in Sources */,
 				AA7D49DB24D2B24200FCF8CA /* SceneDelegate.m in Sources */,
@@ -334,6 +356,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZCY3RQN93G;
 				INFOPLIST_FILE = XYDeviceInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -356,6 +379,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ZCY3RQN93G;
 				INFOPLIST_FILE = XYDeviceInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

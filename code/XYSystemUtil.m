@@ -21,9 +21,11 @@
 #include <net/if.h>
 
 #import <AdSupport/AdSupport.h>
-#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
-    #import <AppTrackingTransparency/AppTrackingTransparency.h>
-#endif
+//#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
+//    #import <AppTrackingTransparency/AppTrackingTransparency.h>
+//#endif
+#import "XYATTrackingManager.h"
+
 static NSString *XY_ZeroIdfa = @"00000000-0000-0000-0000-000000000000";
 
 @implementation XYSystemUtil
@@ -435,7 +437,7 @@ static const u_int Adsforce_GIGABYTE = 1024 * 1024 * 1024;  // bytes
     
     // ios 14处理
     if (@available(iOS 14.0, *)) {
-        ATTrackingManagerAuthorizationStatus states = [ATTrackingManager trackingAuthorizationStatus];
+        ATTrackingManagerAuthorizationStatus states = [XYATTrackingManager trackingAuthorizationStatus];
         if (states == ATTrackingManagerAuthorizationStatusNotDetermined) {
             // 未提示用户
             return NO;
