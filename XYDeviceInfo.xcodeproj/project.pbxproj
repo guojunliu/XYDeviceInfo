@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA1B42C424DA5A5E00EBD452 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA92E78124D905E00041B338 /* AppTrackingTransparency.framework */; };
 		AA20D19824D7DE18008C3DA4 /* XYLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19024D7DE18008C3DA4 /* XYLocalized.m */; };
 		AA20D19924D7DE18008C3DA4 /* XYDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19324D7DE18008C3DA4 /* XYDeviceInfoModel.m */; };
 		AA20D19A24D7DE18008C3DA4 /* XYSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19424D7DE18008C3DA4 /* XYSystemUtil.m */; };
 		AA20D19B24D7DE18008C3DA4 /* XYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20D19724D7DE18008C3DA4 /* XYTableViewController.m */; };
 		AA20D19E24D7DE54008C3DA4 /* XYDeviceInfo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA20D19D24D7DE54008C3DA4 /* XYDeviceInfo.bundle */; };
-		AA5631BB24D9379200A50FC7 /* XYATTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5631B924D9379200A50FC7 /* XYATTrackingManager.m */; };
+		AA5631BB24D9379200A50FC7 /* XYManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5631B924D9379200A50FC7 /* XYManager.m */; };
 		AA6D826F24D933D700C8844D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6D826E24D933D700C8844D /* AdSupport.framework */; };
 		AA7D49DB24D2B24200FCF8CA /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D49D924D2B24200FCF8CA /* SceneDelegate.m */; };
 		AA7D49DD24D2B2A600FCF8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7D49DC24D2B2A600FCF8CA /* Main.storyboard */; };
@@ -22,6 +21,9 @@
 		AABC313524C854F900F8A31A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABC313424C854F900F8A31A /* Assets.xcassets */; };
 		AABC313824C854F900F8A31A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABC313624C854F900F8A31A /* LaunchScreen.storyboard */; };
 		AABC313B24C854F900F8A31A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AABC313A24C854F900F8A31A /* main.m */; };
+		AABE1D2424EAA7AD00EC9C98 /* TraceAESenAndDe.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE1D2024EAA7AD00EC9C98 /* TraceAESenAndDe.m */; };
+		AABE1D2524EAA7AD00EC9C98 /* TraceFBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE1D2324EAA7AD00EC9C98 /* TraceFBEncryptorAES.m */; };
+		AABF2F5F24DD3C3300C19918 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABF2F5E24DD3C3300C19918 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,14 +37,14 @@
 		AA20D19724D7DE18008C3DA4 /* XYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTableViewController.m; sourceTree = "<group>"; };
 		AA20D19D24D7DE54008C3DA4 /* XYDeviceInfo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = XYDeviceInfo.bundle; sourceTree = "<group>"; };
 		AA20D19F24D7E6D6008C3DA4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		AA5631B924D9379200A50FC7 /* XYATTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYATTrackingManager.m; sourceTree = "<group>"; };
-		AA5631BA24D9379200A50FC7 /* XYATTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYATTrackingManager.h; sourceTree = "<group>"; };
+		AA5631B924D9379200A50FC7 /* XYManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYManager.m; sourceTree = "<group>"; };
+		AA5631BA24D9379200A50FC7 /* XYManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYManager.h; sourceTree = "<group>"; };
 		AA6D826E24D933D700C8844D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA7D49D924D2B24200FCF8CA /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		AA7D49DA24D2B24200FCF8CA /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		AA7D49DC24D2B2A600FCF8CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AA92E78124D905E00041B338 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
-		AABC312524C854F800F8A31A /* XYDeviceInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYDeviceInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AABC312524C854F800F8A31A /* 硬件信息IDFA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "硬件信息IDFA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABC312824C854F800F8A31A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AABC312924C854F800F8A31A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AABC312E24C854F800F8A31A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -51,6 +53,11 @@
 		AABC313724C854F900F8A31A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AABC313924C854F900F8A31A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AABC313A24C854F900F8A31A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AABE1D2024EAA7AD00EC9C98 /* TraceAESenAndDe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceAESenAndDe.m; sourceTree = "<group>"; };
+		AABE1D2124EAA7AD00EC9C98 /* TraceFBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceFBEncryptorAES.h; sourceTree = "<group>"; };
+		AABE1D2224EAA7AD00EC9C98 /* TraceAESenAndDe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceAESenAndDe.h; sourceTree = "<group>"; };
+		AABE1D2324EAA7AD00EC9C98 /* TraceFBEncryptorAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceFBEncryptorAES.m; sourceTree = "<group>"; };
+		AABF2F5E24DD3C3300C19918 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1B42C424DA5A5E00EBD452 /* AppTrackingTransparency.framework in Frameworks */,
+				AABF2F5F24DD3C3300C19918 /* StoreKit.framework in Frameworks */,
 				AA6D826F24D933D700C8844D /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,8 +84,9 @@
 				AA20D19424D7DE18008C3DA4 /* XYSystemUtil.m */,
 				AA20D19224D7DE18008C3DA4 /* XYTableViewController.h */,
 				AA20D19724D7DE18008C3DA4 /* XYTableViewController.m */,
-				AA5631BA24D9379200A50FC7 /* XYATTrackingManager.h */,
-				AA5631B924D9379200A50FC7 /* XYATTrackingManager.m */,
+				AA5631BA24D9379200A50FC7 /* XYManager.h */,
+				AA5631B924D9379200A50FC7 /* XYManager.m */,
+				AABE1D1F24EAA7AD00EC9C98 /* AES128ECB */,
 			);
 			path = code;
 			sourceTree = "<group>";
@@ -94,6 +102,7 @@
 		AA92E78024D905E00041B338 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AABF2F5E24DD3C3300C19918 /* StoreKit.framework */,
 				AA6D826E24D933D700C8844D /* AdSupport.framework */,
 				AA92E78124D905E00041B338 /* AppTrackingTransparency.framework */,
 			);
@@ -114,7 +123,7 @@
 		AABC312624C854F800F8A31A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AABC312524C854F800F8A31A /* XYDeviceInfo.app */,
+				AABC312524C854F800F8A31A /* 硬件信息IDFA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +146,17 @@
 			path = XYDeviceInfo;
 			sourceTree = "<group>";
 		};
+		AABE1D1F24EAA7AD00EC9C98 /* AES128ECB */ = {
+			isa = PBXGroup;
+			children = (
+				AABE1D2224EAA7AD00EC9C98 /* TraceAESenAndDe.h */,
+				AABE1D2024EAA7AD00EC9C98 /* TraceAESenAndDe.m */,
+				AABE1D2124EAA7AD00EC9C98 /* TraceFBEncryptorAES.h */,
+				AABE1D2324EAA7AD00EC9C98 /* TraceFBEncryptorAES.m */,
+			);
+			path = AES128ECB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,7 +174,7 @@
 			);
 			name = XYDeviceInfo;
 			productName = XYDeviceInfo;
-			productReference = AABC312524C854F800F8A31A /* XYDeviceInfo.app */;
+			productReference = AABC312524C854F800F8A31A /* 硬件信息IDFA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -209,14 +229,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA20D19824D7DE18008C3DA4 /* XYLocalized.m in Sources */,
+				AABE1D2524EAA7AD00EC9C98 /* TraceFBEncryptorAES.m in Sources */,
 				AA20D19A24D7DE18008C3DA4 /* XYSystemUtil.m in Sources */,
 				AA20D19B24D7DE18008C3DA4 /* XYTableViewController.m in Sources */,
-				AA5631BB24D9379200A50FC7 /* XYATTrackingManager.m in Sources */,
+				AA5631BB24D9379200A50FC7 /* XYManager.m in Sources */,
 				AABC313024C854F800F8A31A /* ViewController.m in Sources */,
 				AA20D19924D7DE18008C3DA4 /* XYDeviceInfoModel.m in Sources */,
 				AA7D49DB24D2B24200FCF8CA /* SceneDelegate.m in Sources */,
 				AABC312A24C854F800F8A31A /* AppDelegate.m in Sources */,
 				AABC313B24C854F900F8A31A /* main.m in Sources */,
+				AABE1D2424EAA7AD00EC9C98 /* TraceAESenAndDe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = ZCY3RQN93G;
 				INFOPLIST_FILE = XYDeviceInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -366,7 +388,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steve.liu.idfa;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "硬件信息IDFA";
 				PROVISIONING_PROFILE_SPECIFIER = com_steve_liu_idfa_development_profiles;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -379,7 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = ZCY3RQN93G;
 				INFOPLIST_FILE = XYDeviceInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -389,7 +411,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steve.liu.idfa;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "硬件信息IDFA";
 				PROVISIONING_PROFILE_SPECIFIER = com_steve_liu_idfa_development_profiles;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

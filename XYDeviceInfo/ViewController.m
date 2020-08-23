@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "XYTableViewController.h"
+#import <StoreKit/StoreKit.h>
 
 @interface ViewController ()
 

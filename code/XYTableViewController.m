@@ -9,11 +9,9 @@
 #import "XYDeviceInfoModel.h"
 #import "XYLocalized.h"
 #import "XYSystemUtil.h"
-//#if __has_include(<AppTrackingTransparency/AppTrackingTransparency.h>)
-//    #import <AppTrackingTransparency/AppTrackingTransparency.h>
-//#endif
-#import "XYATTrackingManager.h"
+#import "XYManager.h"
 #import <AdSupport/AdSupport.h>
+#import "TraceAESenAndDe.h"
 
 @interface XYTableViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -118,14 +116,14 @@
     
     // iOS 14请求idfa权限
     if (@available(iOS 14.0, *)) {
-        ATTrackingManagerAuthorizationStatus states = [XYATTrackingManager trackingAuthorizationStatus];
-        if (states == ATTrackingManagerAuthorizationStatusNotDetermined) {
+        NSInteger s = [XYManager a];
+        if (s == 0) {
             // 未提示用户
 
-            [XYATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+            [XYManager b:^(NSInteger status) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // 获取到权限后，依然使用老方法获取idfa
-                    if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+                    if (status == 3) {
                         [self createData];
                     }
                     else {
@@ -137,30 +135,22 @@
                 });
             }];
         }
-        else if (states == ATTrackingManagerAuthorizationStatusRestricted) {
+        else if (s == 1) {
             // 限制使用
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
             [alert addAction:action2];
             [self presentViewController:alert animated:YES completion:nil];
         }
-        else if (states == ATTrackingManagerAuthorizationStatusDenied) {
+        else if (s == 2) {
             // 拒绝
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
             [alert addAction:action2];
             [self presentViewController:alert animated:YES completion:nil];
         }
-        else if (states == ATTrackingManagerAuthorizationStatusAuthorized) {
+        else if (s == 3) {
         }
-        
-//        BOOL b = [XYSystemUtil canUseIDFA];
-//        if (!b) {
-//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:XYLocalizedString(@"请在设置-隐私-Tracking中允许App请求跟踪") preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *action2 = [UIAlertAction actionWithTitle:XYLocalizedString(@"确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
-//            [alert addAction:action2];
-//            [self presentViewController:alert animated:YES completion:nil];
-//        }
     }
     else {
         BOOL b = [XYSystemUtil canUseIDFA];
